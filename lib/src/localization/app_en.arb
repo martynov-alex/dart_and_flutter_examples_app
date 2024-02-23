@@ -1,6 +1,10 @@
 {
-  "appTitle": "dart_and_flutter_examples_app",
-  "@appTitle": {
-    "description": "The title of the application"
-  }
+  "@@locale": "en",
+  "appTitle": "Dart and Flutter examples",
+
+  "@customPainter": {
+    "description": "Example for CustomPainter"
+  },
+  "customPainterTitle": "CustomPainter",
+  "customLinearIndicatorTitle": "Custom Linear Indicator"
 }
