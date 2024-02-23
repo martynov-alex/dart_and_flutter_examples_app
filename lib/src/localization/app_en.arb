@@ -1,0 +1,6 @@
+{
+  "appTitle": "dart_and_flutter_examples_app",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
