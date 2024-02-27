@@ -477,6 +477,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  mjk_lint_rules:
+    dependency: "direct dev"
+    description:
+      name: mjk_lint_rules
+      sha256: ef9e319717f8cfbc410fbaa5a76ad181ade3ae32b1b86f5f073ff965a72df8e6
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.1"
   package_config:
     dependency: transitive
     description:

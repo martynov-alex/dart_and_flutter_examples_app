@@ -1,11 +1,10 @@
 import 'package:dart_and_flutter_examples_app/src/localization/localizations_x.dart';
 import 'package:dart_and_flutter_examples_app/src/routing/app_router.dart';
+import 'package:dart_and_flutter_examples_app/src/settings/presentation/settings_screen/settings_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'settings/presentation/settings_screen/settings_screen_controller.dart';
 
 /// The Widget that configures your application.
 class MyApp extends ConsumerWidget {
@@ -44,7 +43,7 @@ class MyApp extends ConsumerWidget {
       //
       // The appTitle is defined in .arb files found in the localization
       // directory.
-      onGenerateTitle: (BuildContext context) => context.l10n.appTitle,
+      onGenerateTitle: (context) => context.l10n.appTitle,
 
       // Define a light and dark color theme. Then, read the user's
       // preferred ThemeMode (light, dark, or system default) from the
@@ -52,7 +51,6 @@ class MyApp extends ConsumerWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.greenAccent,
-          brightness: Brightness.light,
         ),
       ),
       darkTheme: ThemeData(

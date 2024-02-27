@@ -28,6 +28,7 @@ dev_dependencies:
   flutter_lints: 3.0.1
   flutter_test:
     sdk: flutter
+  mjk_lint_rules: ^3.0.1
   riverpod_generator: 2.3.11
   riverpod_lint: 2.3.9
 

@@ -42,8 +42,8 @@ class LinearIndicator extends StatefulWidget {
 class _LinearIndicatorState extends State<LinearIndicator>
     with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
-  Animation? _animation;
-  double _progress = 0.0;
+  Animation<double>? _animation;
+  double? _progress = 0.0;
 
   @override
   void dispose() {
@@ -106,7 +106,7 @@ class _LinearIndicatorState extends State<LinearIndicator>
 }
 
 class _LinearIndicatorPainter extends CustomPainter {
-  final double progress;
+  final double? progress;
   final double percentageCurrent;
   final double lineWidth;
   final Color progressColor;
@@ -128,16 +128,17 @@ class _LinearIndicatorPainter extends CustomPainter {
     required this.insideIndicatorTextColor,
     required this.outsideIndicatorTextColor,
   }) {
-    _paintBackground.color = backgroundColor;
-    _paintBackground.style = PaintingStyle.stroke;
-    _paintBackground.strokeWidth = lineWidth;
-    _paintBackground.strokeCap = StrokeCap.round;
+    _paintBackground
+      ..color = backgroundColor
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = lineWidth
+      ..strokeCap = StrokeCap.round;
 
-    _paintLine.color =
-        progress == 0 ? progressColor.withOpacity(0.0) : progressColor;
-    _paintLine.style = PaintingStyle.stroke;
-    _paintLine.strokeWidth = lineWidth;
-    _paintLine.strokeCap = StrokeCap.round;
+    _paintLine
+      ..color = progress == 0 ? progressColor.withOpacity(0.0) : progressColor
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = lineWidth
+      ..strokeCap = StrokeCap.round;
 
     _text = '${percentageCurrent.toStringAsFixed(0)}%';
   }
@@ -151,7 +152,7 @@ class _LinearIndicatorPainter extends CustomPainter {
     canvas.drawLine(start, end, _paintBackground);
 
     // рисуем индикатор с прогрессом по текущему проценту
-    final xProgress = size.width * progress;
+    final xProgress = size.width * (progress ?? 0);
     canvas.drawLine(start, Offset(xProgress, size.height / 2), _paintLine);
 
     // рисуем текст с текущим процентом только в конце анимации
@@ -176,33 +177,34 @@ class _LinearIndicatorPainter extends CustomPainter {
     double maxProgress,
     double height,
   ) {
-    _textPainter.text = TextSpan(
-      text: _text,
-      style: TextStyle(
-        fontSize: 16,
-        color: insideIndicatorTextColor,
-      ),
-    );
-
-    _textPainter.layout();
-
-    // если текст не влезает в индикатор, то рисуем его справа
-    if (xProgress < _textPainter.width + Sizes.p8) {
-      _textPainter.text = TextSpan(
+    _textPainter
+      ..text = TextSpan(
         text: _text,
         style: TextStyle(
           fontSize: 16,
-          color: outsideIndicatorTextColor,
+          color: insideIndicatorTextColor,
         ),
-      );
-      _textPainter.paint(
-        canvas,
-        Offset(
-          // выравниваем текст для нулевых показателей
-          xProgress + (maxProgress == 0 ? Sizes.p8 : Sizes.p24),
-          (height - _textPainter.height) / 2,
-        ),
-      );
+      )
+      ..layout();
+
+    // если текст не влезает в индикатор, то рисуем его справа
+    if (xProgress < _textPainter.width + Sizes.p8) {
+      _textPainter
+        ..text = TextSpan(
+          text: _text,
+          style: TextStyle(
+            fontSize: 16,
+            color: outsideIndicatorTextColor,
+          ),
+        )
+        ..paint(
+          canvas,
+          Offset(
+            // выравниваем текст для нулевых показателей
+            xProgress + (maxProgress == 0 ? Sizes.p8 : Sizes.p24),
+            (height - _textPainter.height) / 2,
+          ),
+        );
       return;
     }
 
@@ -216,4 +218,3 @@ class _LinearIndicatorPainter extends CustomPainter {
     );
   }
 }
-
