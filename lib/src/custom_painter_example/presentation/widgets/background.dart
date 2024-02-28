@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui' as ui;
 
 import 'package:dart_and_flutter_examples_app/src/custom_painter_example/presentation/widgets/parallax_background_painter.dart';
@@ -30,20 +31,19 @@ class _BackgroundState extends State<Background> {
   @override
   void initState() {
     super.initState();
-    _loadImage();
+    unawaited(_loadImage());
   }
 
   ui.Image? _image;
+
   Future<void> _loadImage() async {
-    const imageProvider = NetworkImage('https://picsum.photos/id/305/600/4000');
-    final ImageStreamListener listener = ImageStreamListener((info, _) {
+    const imageProvider = NetworkImage('http://placekitten.com/g/600/5000');
+    final listener = ImageStreamListener((info, _) {
       setState(() {
         _image = info.image;
       });
     });
-    final ImageStream stream =
-        imageProvider.resolve(const ImageConfiguration());
-    stream.addListener(listener);
+    imageProvider.resolve(ImageConfiguration.empty).addListener(listener);
   }
 
   @override

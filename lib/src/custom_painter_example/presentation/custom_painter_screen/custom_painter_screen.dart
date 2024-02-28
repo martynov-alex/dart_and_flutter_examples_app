@@ -35,7 +35,7 @@ class _CustomPainterScreenState extends State<CustomPainterScreen> {
           controller: _scrollController,
           itemCount: _ids.length,
           itemBuilder: (context, index) {
-            final int id = _ids[index];
+            final id = _ids[index];
             return ItemCard(id: id);
           },
         ),

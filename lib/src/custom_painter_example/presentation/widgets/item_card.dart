@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 
 class ItemCard extends StatefulWidget {
   const ItemCard({
-    super.key,
     required this.id,
+    super.key,
   });
 
   final int id;

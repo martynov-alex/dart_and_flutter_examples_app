@@ -23,7 +23,7 @@ class ExamplesScreen extends StatelessWidget {
       body: ListView.builder(
         restorationId: 'sampleItemListView',
         itemCount: examples.length,
-        itemBuilder: (BuildContext context, int index) {
+        itemBuilder: (context, index) {
           final routeTitle = examples[index].title;
           final routeName = examples[index].route;
 
