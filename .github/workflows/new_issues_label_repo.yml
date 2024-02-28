@@ -7,7 +7,6 @@ on:
 
 jobs:
   label_issues:
-    if: github.repository == 'martynov-alex/github_actions_examples'
-    uses: martynov-alex/github_actions_examples/.github/workflows/new_issues_label.yml@main
+    uses: surfstudio/flutter-ci-workflows/.github/workflows/new_pull_request_label.yml@main
     secrets:
-      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      SECRET_ISSUES: ${{ secrets.ACCESS_TOKEN }}
