@@ -1,0 +1,12 @@
+name: Label issues
+on:
+  issues:
+    types:
+      - reopened
+      - opened
+
+jobs:
+  label_issues:
+    uses: martynov-alex/github_actions_examples/.github/workflows/new_issues_label.yml@main
+    secrets:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
