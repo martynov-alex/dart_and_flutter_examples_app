@@ -1,4 +1,4 @@
-import 'package:dart_and_flutter_examples_app/src/app.dart';
+import 'package:dart_and_flutter_examples_app/app/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // ignore:depend_on_referenced_packages
