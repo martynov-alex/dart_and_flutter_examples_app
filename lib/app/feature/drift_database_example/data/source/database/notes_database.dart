@@ -1,3 +1,1 @@
-abstract interface class NotesDatabase {
-  //Future<Todo> insertNote(NoteEntriesCompanion note);
-}
+abstract interface class NotesDatabase {}

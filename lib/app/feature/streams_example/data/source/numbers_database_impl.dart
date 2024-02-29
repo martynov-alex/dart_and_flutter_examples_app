@@ -1,0 +1,67 @@
+import 'package:dart_and_flutter_examples_app/app/common/data/source/database/connection/connection.dart'
+    as impl;
+import 'package:dart_and_flutter_examples_app/app/feature/streams_example/data/mapper/numbers_mapper.dart';
+import 'package:dart_and_flutter_examples_app/app/feature/streams_example/data/source/numbers_database.dart';
+import 'package:dart_and_flutter_examples_app/app/feature/streams_example/data/source/numbers_tables.dart';
+import 'package:drift/drift.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+part 'numbers_database_impl.g.dart';
+
+@DriftDatabase(tables: [Numbers])
+class NumbersDatabaseImpl extends _$NumbersDatabaseImpl
+    implements NumbersDatabase {
+  NumbersDatabaseImpl({
+    required this.dbName,
+    required this.inMemory,
+    required this.logStatements,
+  }) : super(impl.connect(
+          dbName,
+          inMemory: inMemory,
+          logStatements: logStatements,
+        ));
+
+  final String dbName;
+  final bool inMemory;
+  final bool logStatements;
+
+  @override
+  int get schemaVersion => 1;
+
+  NumbersDatabaseImpl.forTesting(
+    DatabaseConnection super.connection, {
+    required this.dbName,
+    required this.inMemory,
+    required this.logStatements,
+  });
+
+  static final StateProvider<NumbersDatabaseImpl> provider =
+      StateProvider((ref) {
+    final database = NumbersDatabaseImpl(
+      dbName: 'numbers.db',
+      inMemory: false,
+      logStatements: true,
+    );
+    ref.onDispose(database.close);
+
+    return database;
+  });
+
+  @override
+  Stream<List<int>> watchNumbers() {
+    final query = select(numbers);
+
+    return query.map(NumbersMapper.fromDto).watch();
+  }
+
+  @override
+  Stream<int> watchLast() {
+    final query = select(numbers)
+      ..orderBy([
+        (tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc),
+      ])
+      ..limit(1);
+
+    return query.map(NumbersMapper.fromDto).watchSingle();
+  }
+}
