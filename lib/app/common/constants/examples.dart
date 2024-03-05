@@ -9,4 +9,9 @@ final examples = [
     icon: Icons.format_paint,
     route: AppRoute.customPainter.name,
   ),
+  ExampleInfo(
+    title: 'Streams'.hardcoded,
+    icon: Icons.replay_circle_filled_outlined,
+    route: AppRoute.streams.name,
+  ),
 ];

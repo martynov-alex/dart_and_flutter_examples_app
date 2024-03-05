@@ -5,18 +5,51 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'numbers_repository_impl.g.dart';
 
-@riverpod
-class NumbersRepositoryImpl extends _$NumbersRepositoryImpl
-    implements NumbersRepository {
-  late final NumbersDatabase database = ref.read(NumbersDatabaseImpl.provider);
+class NumbersRepositoryImpl implements NumbersRepository {
+  final NumbersDatabase database;
+
+  NumbersRepositoryImpl(this.database);
 
   @override
-  Stream<List<int>> build() {
+  Stream<List<int>> watchNumbers() {
     return database.watchNumbers();
   }
 
   @override
-  Stream<int> watchLast() {
-    return database.watchLast();
+  Stream<int?> watchLastNumber() {
+    return database.watchLastNumber();
   }
+
+  @override
+  Future<void> addNumber(int number) {
+    return database.addNumber(number);
+  }
+
+  @override
+  Future<void> addNumbers(List<int> numbers) {
+    return database.addNumbers(numbers);
+  }
+
+  @override
+  Future<void> deleteNumbers() {
+    return database.deleteNumbers();
+  }
+}
+
+@riverpod
+NumbersRepositoryImpl numbersRepository(NumbersRepositoryRef ref) {
+  final database = ref.read(NumbersDatabaseImpl.provider);
+  return NumbersRepositoryImpl(database);
+}
+
+@riverpod
+Stream<List<int>> numbersStream(NumbersStreamRef ref) {
+  final repository = ref.watch(numbersRepositoryProvider);
+  return repository.watchNumbers();
+}
+
+@riverpod
+Stream<int?> lastNumbersStream(LastNumbersStreamRef ref) {
+  final repository = ref.watch(numbersRepositoryProvider);
+  return repository.watchLastNumber();
 }

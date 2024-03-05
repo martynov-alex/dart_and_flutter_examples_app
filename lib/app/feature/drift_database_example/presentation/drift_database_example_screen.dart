@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class StreamsExampleScreen extends StatelessWidget {
-  const StreamsExampleScreen({super.key});
+class DriftDatabaseExampleScreen extends StatelessWidget {
+  const DriftDatabaseExampleScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

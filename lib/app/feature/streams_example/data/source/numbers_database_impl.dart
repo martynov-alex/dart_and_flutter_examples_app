@@ -55,13 +55,36 @@ class NumbersDatabaseImpl extends _$NumbersDatabaseImpl
   }
 
   @override
-  Stream<int> watchLast() {
+  Stream<int?> watchLastNumber() {
     final query = select(numbers)
       ..orderBy([
         (tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc),
       ])
       ..limit(1);
 
-    return query.map(NumbersMapper.fromDto).watchSingle();
+    return query.map(NumbersMapper.fromDto).watchSingleOrNull();
+  }
+
+  @override
+  Future<void> addNumber(int number) {
+    return into(numbers).insert(
+      NumbersCompanion.insert(number: number),
+    );
+  }
+
+  @override
+  Future<void> addNumbers(List<int> numbersList) async {
+    await batch((batch) {
+      batch.insertAll(
+          numbers,
+          numbersList
+              .map((number) => NumbersCompanion.insert(number: number))
+              .toList());
+    });
+  }
+
+  @override
+  Future<void> deleteNumbers() {
+    return delete(numbers).go();
   }
 }
