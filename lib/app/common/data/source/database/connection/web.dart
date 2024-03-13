@@ -12,32 +12,36 @@ DatabaseConnection connect(
   bool logStatements = false,
   bool inMemory = false,
 }) {
-  return DatabaseConnection.delayed(Future(() async {
-    if (inMemory) {
-      final response = await http.get(Uri.parse('sqlite3.wasm'));
-      final sqlite3 = await WasmSqlite3.load(
-        response.bodyBytes,
+  return DatabaseConnection.delayed(
+    Future(() async {
+      if (inMemory) {
+        final response = await http.get(Uri.parse('sqlite3.wasm'));
+        final sqlite3 = await WasmSqlite3.load(
+          response.bodyBytes,
+        );
+
+        return DatabaseConnection(
+          WasmDatabase.inMemory(
+            sqlite3,
+            logStatements: logStatements,
+          ),
+        );
+      }
+
+      final db = await WasmDatabase.open(
+        databaseName: 'todo-app',
+        sqlite3Uri: Uri.parse('sqlite3.wasm'),
+        driftWorkerUri: Uri.parse('drift_worker.js'),
       );
 
-      return DatabaseConnection(WasmDatabase.inMemory(
-        sqlite3,
-        logStatements: logStatements,
-      ));
-    }
+      if (db.missingFeatures.isNotEmpty) {
+        debugPrint('Using ${db.chosenImplementation} due to unsupported '
+            'browser features: ${db.missingFeatures}');
+      }
 
-    final db = await WasmDatabase.open(
-      databaseName: 'todo-app',
-      sqlite3Uri: Uri.parse('sqlite3.wasm'),
-      driftWorkerUri: Uri.parse('drift_worker.js'),
-    );
-
-    if (db.missingFeatures.isNotEmpty) {
-      debugPrint('Using ${db.chosenImplementation} due to unsupported '
-          'browser features: ${db.missingFeatures}');
-    }
-
-    return db.resolvedExecutor;
-  }));
+      return db.resolvedExecutor;
+    }),
+  );
 }
 
 Future<void> validateDatabaseSchema(GeneratedDatabase database) async {

@@ -1,6 +1,6 @@
+import 'package:dart_and_flutter_examples_app/app/feature/settings/presentation/settings_screen/settings_screen_controller.dart';
 import 'package:dart_and_flutter_examples_app/core/localization/localizations_x.dart';
 import 'package:dart_and_flutter_examples_app/core/routing/app_router.dart';
-import 'package:dart_and_flutter_examples_app/app/feature/settings/presentation/settings_screen/settings_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

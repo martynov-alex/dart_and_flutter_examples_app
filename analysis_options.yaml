@@ -1,7 +1,18 @@
-include: package:mjk_lint_rules/mjk_lint_rules.yaml
+# This file configures the analyzer to use the lint rule set from `package:lint`
+
+include: package:lint/strict.yaml # For production apps
+# include: package:lint/casual.yaml # For code samples, hackathons and other non-production code
+# include: package:lint/package.yaml # Use this for packages with public API
+
+# You might want to exclude auto-generated files from dart analysis
+analyzer:
+  exclude:
+    - '**.freezed.dart'
+    - '**.g.dart'
 
 linter:
   rules:
-    always_put_required_named_parameters_first: true
-    one_member_abstracts: false
-    public_member_api_docs: false
+    # always_put_required_named_parameters_first: true
+    # one_member_abstracts: false
+    # public_member_api_docs: false
+    avoid_classes_with_only_static_members: false

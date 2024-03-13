@@ -24,28 +24,30 @@ DatabaseConnection connect(
   bool logStatements = false,
   bool inMemory = false,
 }) {
-  return DatabaseConnection.delayed(Future(() async {
-    if (inMemory) {
-      return DatabaseConnection(
-        NativeDatabase.memory(logStatements: logStatements),
+  return DatabaseConnection.delayed(
+    Future(() async {
+      if (inMemory) {
+        return DatabaseConnection(
+          NativeDatabase.memory(logStatements: logStatements),
+        );
+      }
+
+      if (Platform.isAndroid) {
+        await applyWorkaroundToOpenSqlite3OnOldAndroidVersions();
+
+        final cachebase = (await getTemporaryDirectory()).path;
+
+        // We can't access /tmp on Android, which sqlite3 would try by default.
+        // Explicitly tell it about the correct temporary directory.
+        sqlite3.tempDirectory = cachebase;
+      }
+
+      return NativeDatabase.createBackgroundConnection(
+        await databaseFile(dbName),
+        logStatements: logStatements,
       );
-    }
-
-    if (Platform.isAndroid) {
-      await applyWorkaroundToOpenSqlite3OnOldAndroidVersions();
-
-      final cachebase = (await getTemporaryDirectory()).path;
-
-      // We can't access /tmp on Android, which sqlite3 would try by default.
-      // Explicitly tell it about the correct temporary directory.
-      sqlite3.tempDirectory = cachebase;
-    }
-
-    return NativeDatabase.createBackgroundConnection(
-      await databaseFile(dbName),
-      logStatements: logStatements,
-    );
-  }));
+    }),
+  );
 }
 
 Future<void> validateDatabaseSchema(GeneratedDatabase database) async {

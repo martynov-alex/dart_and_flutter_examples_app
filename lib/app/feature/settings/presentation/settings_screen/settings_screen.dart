@@ -41,7 +41,7 @@ class SettingsScreen extends ConsumerWidget {
             DropdownMenuItem(
               value: ThemeMode.dark,
               child: Text('Dark Theme'),
-            )
+            ),
           ],
         ),
       ),

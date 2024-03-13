@@ -13,11 +13,13 @@ class NotesDatabaseImpl extends _$NotesDatabaseImpl implements NotesDatabase {
     required this.dbName,
     required this.inMemory,
     required this.logStatements,
-  }) : super(impl.connect(
-          dbName,
-          inMemory: inMemory,
-          logStatements: logStatements,
-        ));
+  }) : super(
+          impl.connect(
+            dbName,
+            inMemory: inMemory,
+            logStatements: logStatements,
+          ),
+        );
 
   final String dbName;
   final bool inMemory;

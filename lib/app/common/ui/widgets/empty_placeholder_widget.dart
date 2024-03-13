@@ -1,5 +1,5 @@
-import 'package:dart_and_flutter_examples_app/app/common/ui/widgets/primary_button.dart';
 import 'package:dart_and_flutter_examples_app/app/common/constants/app_sizes.dart';
+import 'package:dart_and_flutter_examples_app/app/common/ui/widgets/primary_button.dart';
 import 'package:dart_and_flutter_examples_app/core/localization/string_hardcoded.dart';
 import 'package:dart_and_flutter_examples_app/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class EmptyPlaceholderWidget extends StatelessWidget {
             PrimaryButton(
               onPressed: () => context.goNamed(AppRoute.home.name),
               text: 'Go Home'.hardcoded,
-            )
+            ),
           ],
         ),
       ),

@@ -15,11 +15,13 @@ class NumbersDatabaseImpl extends _$NumbersDatabaseImpl
     required this.dbName,
     required this.inMemory,
     required this.logStatements,
-  }) : super(impl.connect(
-          dbName,
-          inMemory: inMemory,
-          logStatements: logStatements,
-        ));
+  }) : super(
+          impl.connect(
+            dbName,
+            inMemory: inMemory,
+            logStatements: logStatements,
+          ),
+        );
 
   final String dbName;
   final bool inMemory;
@@ -76,10 +78,11 @@ class NumbersDatabaseImpl extends _$NumbersDatabaseImpl
   Future<void> addNumbers(List<int> numbersList) async {
     await batch((batch) {
       batch.insertAll(
-          numbers,
-          numbersList
-              .map((number) => NumbersCompanion.insert(number: number))
-              .toList());
+        numbers,
+        numbersList
+            .map((number) => NumbersCompanion.insert(number: number))
+            .toList(),
+      );
     });
   }
 

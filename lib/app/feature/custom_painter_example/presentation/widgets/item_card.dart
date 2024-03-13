@@ -71,14 +71,18 @@ class _ItemCardState extends State<ItemCard> {
               children: [
                 MaterialButton(
                   child: Text('+', style: context.textTheme.headlineLarge),
-                  onPressed: () => setState(() =>
-                      percentageCurrent = (++percentageCurrent).clamp(0, 100)),
+                  onPressed: () => setState(
+                    () =>
+                        percentageCurrent = (++percentageCurrent).clamp(0, 100),
+                  ),
                 ),
                 gapW20,
                 MaterialButton(
                   child: Text('—', style: context.textTheme.headlineLarge),
-                  onPressed: () => setState(() =>
-                      percentageCurrent = (--percentageCurrent).clamp(0, 100)),
+                  onPressed: () => setState(
+                    () =>
+                        percentageCurrent = (--percentageCurrent).clamp(0, 100),
+                  ),
                 ),
               ],
             ),
