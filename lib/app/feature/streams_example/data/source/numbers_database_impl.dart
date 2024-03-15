@@ -37,12 +37,13 @@ class NumbersDatabaseImpl extends _$NumbersDatabaseImpl
     required this.logStatements,
   });
 
+  // Инициализация БД происходит при создании провайдера.
   static final StateProvider<NumbersDatabaseImpl> provider =
       StateProvider((ref) {
     final database = NumbersDatabaseImpl(
       dbName: 'numbers.db',
-      inMemory: false,
-      logStatements: true,
+      inMemory: true,
+      logStatements: false,
     );
     ref.onDispose(database.close);
 

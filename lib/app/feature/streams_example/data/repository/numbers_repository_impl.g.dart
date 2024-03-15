@@ -52,5 +52,38 @@ final lastNumbersStreamProvider = AutoDisposeStreamProvider<int?>.internal(
 );
 
 typedef LastNumbersStreamRef = AutoDisposeStreamProviderRef<int?>;
+String _$sumNumbersStreamHash() => r'3920df042953da541f60a3cbcedb7cc0549efb76';
+
+/// See also [sumNumbersStream].
+@ProviderFor(sumNumbersStream)
+final sumNumbersStreamProvider = AutoDisposeStreamProvider<int>.internal(
+  sumNumbersStream,
+  name: r'sumNumbersStreamProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$sumNumbersStreamHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef SumNumbersStreamRef = AutoDisposeStreamProviderRef<int>;
+String _$basicProcessingMethodsHash() =>
+    r'4c658eea6d211a2900ac670dc8c4b57c80558102';
+
+/// See also [basicProcessingMethods].
+@ProviderFor(basicProcessingMethods)
+final basicProcessingMethodsProvider =
+    AutoDisposeFutureProvider<BasicProcessingMethodsResult>.internal(
+  basicProcessingMethods,
+  name: r'basicProcessingMethodsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$basicProcessingMethodsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef BasicProcessingMethodsRef
+    = AutoDisposeFutureProviderRef<BasicProcessingMethodsResult>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
