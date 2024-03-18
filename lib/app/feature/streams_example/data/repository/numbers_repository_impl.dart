@@ -28,8 +28,9 @@ class NumbersRepositoryImpl implements NumbersRepository {
 
   @override
   Future<void> addNumbers(List<int> numbers) async {
-    return numbers.forEach(database.addNumber);
-    // OR return database.addNumbers(numbers);
+    for (final e in numbers) {
+      await database.addNumber(e);
+    }
   }
 
   @override
@@ -78,7 +79,7 @@ Future<BasicProcessingMethodsResult> basicProcessingMethods(
       .take(10)
       .map((number) => number ?? 0);
 
-  final futureRecord = (
+  final futuresRecord = (
     tenValuesStream.first,
     tenValuesStream.last,
     tenValuesStream.reduce(
@@ -90,7 +91,7 @@ Future<BasicProcessingMethodsResult> basicProcessingMethods(
     ),
   );
 
-  final resultFuture = futureRecord.wait;
+  final resultFuture = futuresRecord.wait;
   return resultFuture.then(
     (value) => (
       first: value.$1,
