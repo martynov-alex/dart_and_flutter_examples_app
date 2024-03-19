@@ -1,0 +1,19 @@
+name: Get FVM version
+
+on:
+  issues:
+    types:
+      - reopened
+      - opened
+
+jobs:
+  get_fvm_version:
+    uses: martynov-alex/github_actions_examples/.github/workflows/get_fvm_version.yml@main
+
+  print_fvm_version:
+    runs-on: ubuntu-latest
+    needs: get_fvm_version
+    steps:
+      - name: Print FVM version
+        run: |
+          echo ${{ needs.get_fvm_version.outputs.flutter_version }}
