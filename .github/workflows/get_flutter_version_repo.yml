@@ -1,0 +1,19 @@
+name: Get Flutter version
+
+on:
+  issues:
+    types:
+      - reopened
+      - opened
+
+jobs:
+  get_flutter_version:
+    uses: martynov-alex/github_actions_examples/.github/workflows/get_flutter_version.yml@main
+
+  print_flutter_version:
+    runs-on: ubuntu-latest
+    needs: get_flutter_version
+    steps:
+      - name: Print Flutter version
+        run: |
+          echo ${{ needs.get_flutter_version.outputs.flutter_version }}
