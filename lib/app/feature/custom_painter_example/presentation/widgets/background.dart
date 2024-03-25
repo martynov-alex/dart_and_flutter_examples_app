@@ -37,7 +37,7 @@ class _BackgroundState extends State<Background> {
   ui.Image? _image;
 
   Future<void> _loadImage() async {
-    const imageProvider = NetworkImage('http://placekitten.com/g/600/5000');
+    const imageProvider = NetworkImage('http://placebear.com/g/600/5000');
     final listener = ImageStreamListener((info, _) {
       setState(() {
         _image = info.image;

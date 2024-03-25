@@ -5,5 +5,5 @@ import 'package:go_router/go_router.dart';
 final streamsExampleRoute = GoRoute(
   path: AppRoute.streams.path,
   name: AppRoute.streams.name,
-  builder: (context, state) => const StreamsExampleScreen(),
+  builder: (_, __) => const StreamsExampleScreen(),
 );

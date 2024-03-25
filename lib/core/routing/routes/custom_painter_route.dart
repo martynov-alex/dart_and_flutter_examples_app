@@ -5,5 +5,5 @@ import 'package:go_router/go_router.dart';
 final customPainterRoute = GoRoute(
   path: AppRoute.customPainter.path,
   name: AppRoute.customPainter.name,
-  builder: (context, state) => const CustomPainterScreen(),
+  builder: (_, __) => const CustomPainterScreen(),
 );
