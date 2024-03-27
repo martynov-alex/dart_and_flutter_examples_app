@@ -6,13 +6,13 @@ class CryptoCoinWidget extends StatefulWidget {
   const CryptoCoinWidget({
     super.key,
     required this.name,
-    required this.index24h,
+    required this.indexChange24h,
     required this.price,
   });
 
   final CryptoCoin name;
   final Decimal price;
-  final Decimal index24h;
+  final double indexChange24h;
 
   @override
   State<CryptoCoinWidget> createState() => _CryptoCoinWidgetState();
