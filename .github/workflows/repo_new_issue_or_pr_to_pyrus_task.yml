@@ -1,0 +1,33 @@
+name: Create Pyrus task from issue or PR
+
+on:
+  issues:
+    types:
+      - reopened
+      - opened
+
+jobs:
+  get_package_name:
+    uses: martynov-alex/github_actions_examples/.github/workflows/get_package_name.yml@main
+
+  create_pyrus_task:
+    name: Create Pyrus task from issue or PR
+    needs: get_package_name
+    uses: martynov-alex/github_actions_examples/.github/workflows/new_issue_or_pr_to_pyrus_task.yml@main
+    with:
+      TYPE: Issue
+      PACKAGE_NAME: ${{ needs.get_package_name.outputs.package_name }}
+      TITLE: ${{ github.event.issue.title }}
+      BODY: ${{ github.event.issue.body }}
+      LINK: ${{ github.event.issue.html_url }}
+    secrets:
+      LOGIN: ${{ secrets.PYRUS_BOT_LOGIN }}
+      SECURITY_KEY: ${{ secrets.PYRUS_BOT_SECRET }}
+
+  add_comment:
+    name: Add comment
+    needs: create_pyrus_task
+    uses: martynov-alex/github_actions_examples/.github/workflows/add_comment_to_issue_or_pr.yml@main
+    with:
+      ISSUE_NUMBER: ${{ github.event.issue.number }}
+      COMMENT_TEXT: "[Link to Pyrus task](https://pyrus.com/t#id${{ needs.create_pyrus_task.outputs.task_id }})"
