@@ -1,0 +1,24 @@
+name: Add comment to Pyrus task
+
+on:
+  issues:
+    types:
+      - closed
+
+jobs:
+  get_pyrus_task_id:
+    name: Get Pyrus task ID from special comment in issue or PR
+    uses: martynov-alex/github_actions_examples/.github/workflows/get_pyrus_task_id_from_issue_or_pr_comment.yml@main
+    with:
+      ISSUE_NUMBER: ${{ github.event.issue.number }}
+
+  add_comment_to_pyrus_task:
+    name: Add comment to Pyrus task
+    needs: get_pyrus_task_id
+    uses: martynov-alex/github_actions_examples/.github/workflows/add_comment_to_pyrus_task.yml@main
+    with:
+      TASK_ID: ${{ needs.get_pyrus_task_id.outputs.PYRUS_TASK_ID }}
+      COMMENT_TEXT: Issue закрыто.
+    secrets:
+      LOGIN: ${{ secrets.PYRUS_BOT_LOGIN }}
+      SECURITY_KEY: ${{ secrets.PYRUS_BOT_SECRET }}
