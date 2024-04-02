@@ -31,5 +31,5 @@ jobs:
     with:
       ISSUE_NUMBER: ${{ github.event.issue.number }}
       # Нельзя изменять текст комментария, т.к. по тексту происходит поиск ID задачи в Pyrus
-      COMMENT_TEXT: "[Link to Pyrus task](https://pyrus.com/t#id${{ needs.create_pyrus_task.outputs.task_id }})"
+      COMMENT_TEXT: "[Link to Pyrus task](https://pyrus.com/t#id${{ needs.create_pyrus_task.outputs.TASK_ID }})"
       REACTIONS: rocket
