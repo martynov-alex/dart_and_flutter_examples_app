@@ -15,7 +15,7 @@ final examples = [
     route: AppRoute.streams.name,
   ),
   ExampleInfo(
-    title: 'Crypto Exchange Platform'.hardcoded,
+    title: 'Crypto Platform'.hardcoded,
     icon: Icons.monetization_on_outlined,
     route: AppRoute.cryptoPlatform.name,
   ),

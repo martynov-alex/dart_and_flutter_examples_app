@@ -3,15 +3,15 @@ import 'package:dart_and_flutter_examples_app/core/routing/routes/crypto_platfor
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-/// Основной экран Crypto Exchange Platform.
-class CryptoExchangePlatformScreen extends StatelessWidget {
-  const CryptoExchangePlatformScreen({super.key});
+/// Основной экран Crypto Platform.
+class CryptoPlatformScreen extends StatelessWidget {
+  const CryptoPlatformScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Crypto Exchange Platform'.hardcoded),
+        title: Text('Crypto Platform'.hardcoded),
         actions: [
           IconButton(
             icon: const Icon(Icons.widgets),
@@ -20,7 +20,7 @@ class CryptoExchangePlatformScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(child: Text('Crypto Exchange Platform Screen')),
+      body: const Center(child: Text('Crypto Platform Screen')),
     );
   }
 }

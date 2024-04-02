@@ -1,5 +1,5 @@
-import 'package:dart_and_flutter_examples_app/app/feature/crypto_exchange_platform_layout/presentation/screens/crypto_exchange_platform_screen/crypto_exchange_platform_screen.dart';
-import 'package:dart_and_flutter_examples_app/app/feature/crypto_exchange_platform_layout/presentation/screens/crypto_widget_list_screen/crypto_widget_list_screen.dart';
+import 'package:dart_and_flutter_examples_app/app/feature/crypto_platform_layout/presentation/screens/crypto_platform_screen/crypto_platform_screen.dart';
+import 'package:dart_and_flutter_examples_app/app/feature/crypto_platform_layout/presentation/screens/crypto_widget_list_screen/crypto_widget_list_screen.dart';
 import 'package:dart_and_flutter_examples_app/core/routing/app_router.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,7 +16,7 @@ enum CryptoPlatformRoute {
 final cryptoPlatformRoute = GoRoute(
   path: AppRoute.cryptoPlatform.path,
   name: AppRoute.cryptoPlatform.name,
-  builder: (_, __) => const CryptoExchangePlatformScreen(),
+  builder: (_, __) => const CryptoPlatformScreen(),
   routes: [
     GoRoute(
       path: CryptoPlatformRoute.cryptoWidgetList.path,
