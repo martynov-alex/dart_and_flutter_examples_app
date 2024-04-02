@@ -7,18 +7,11 @@ on:
       - closed
 
 jobs:
-  print_issue_number:
-    name: Print issue number
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print issue number
-        run: echo "Issue number is ${{ github.event.issue.number }}"
-
   get_pyrus_task_id:
     name: Get Pyrus task ID from special comment in issue or PR
     uses: martynov-alex/github_actions_examples/.github/workflows/get_pyrus_task_id_from_issue_or_pr_comment.yml@main
     with:
-      ISSUE_NUMBER: 1
+      ISSUE_NUMBER: ${{ github.event.issue.number }}
 
   add_comment_to_pyrus_task:
     name: Add comment to Pyrus task
