@@ -30,4 +30,6 @@ jobs:
     uses: martynov-alex/github_actions_examples/.github/workflows/add_comment_to_issue_or_pr.yml@main
     with:
       ISSUE_NUMBER: ${{ github.event.issue.number }}
+      # Нельзя изменять текст комментария, т.к. по тексту происходит поиск ID задачи в Pyrus
       COMMENT_TEXT: "[Link to Pyrus task](https://pyrus.com/t#id${{ needs.create_pyrus_task.outputs.task_id }})"
+      REACTIONS: rocket
