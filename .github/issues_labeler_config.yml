@@ -1,7 +1,0 @@
-# Documentation: https://github.com/marketplace/actions/regex-issue-labeler
-
-new issue:
-    - '/.*/'
-
-critical:
-    - '(critical|urgent)'
