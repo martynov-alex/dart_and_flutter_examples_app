@@ -1,6 +1,5 @@
 import 'package:dart_and_flutter_examples_app/app/feature/examples/presentation/examples_screen/examples_screen.dart';
 import 'package:dart_and_flutter_examples_app/core/routing/not_found_screen.dart';
-import 'package:dart_and_flutter_examples_app/core/routing/routes/crypto_platform_route.dart';
 import 'package:dart_and_flutter_examples_app/core/routing/routes/custom_painter_route.dart';
 import 'package:dart_and_flutter_examples_app/core/routing/routes/settings_route.dart';
 import 'package:dart_and_flutter_examples_app/core/routing/routes/streams_example_route.dart';
@@ -14,7 +13,6 @@ enum AppRoute {
   settings('settings', 'Settings'),
   customPainter('custom_painter', 'Custom Painter Example'),
   streams('streams', 'Streams Example'),
-  cryptoPlatform('crypto_platform', 'Crypto Platform Layout'),
   ;
 
   const AppRoute(this.path, this.title);
@@ -36,7 +34,6 @@ GoRouter goRouter(GoRouterRef ref) {
           settingsRoute,
           customPainterRoute,
           streamsExampleRoute,
-          cryptoPlatformRoute,
         ],
       ),
     ],

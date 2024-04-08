@@ -11,15 +11,12 @@ environment:
 
 dependencies:
   collection: 1.18.0
-  decimal: 2.3.3
   drift: 2.16.0
-  fl_chart: 0.66.2
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: 2.5.1
-  flutter_svg: 2.0.10+1
   go_router: 13.2.1
   http: 1.2.1
   intl: 0.18.1
@@ -47,14 +44,6 @@ flutter:
   assets:
     - assets/images/
     - assets/vectors/
-    - assets/vectors/cryptocurrency/
-
-  fonts:
-  - family: Britanica
-    fonts:
-      - asset: assets/fonts/Britanica/Britanica Light.ttf
-      - asset: assets/fonts/Britanica/Britanica Light Italic.ttf
-        style: italic
 
 # RPS
 # Запуск — $ rps [script_name]

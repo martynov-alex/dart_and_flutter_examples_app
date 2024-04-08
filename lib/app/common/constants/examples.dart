@@ -14,9 +14,4 @@ final examples = [
     icon: Icons.replay_circle_filled_outlined,
     route: AppRoute.streams.name,
   ),
-  ExampleInfo(
-    title: 'Crypto Platform'.hardcoded,
-    icon: Icons.monetization_on_outlined,
-    route: AppRoute.cryptoPlatform.name,
-  ),
 ];

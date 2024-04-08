@@ -36,6 +36,3 @@ groups:
   - path: assets/vectors
     class_name: AppVectors
     types: [ .svg ]
-  - path: assets/vectors/cryptocurrency
-    class_name: CryptocurrencyIcons
-    types: [ .svg ]
