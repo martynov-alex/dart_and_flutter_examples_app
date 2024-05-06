@@ -1,4 +1,4 @@
-import 'package:dart_and_flutter_examples_app/app/feature/settings/presentation/settings_screen/settings_screen_controller.dart';
+import 'package:dart_and_flutter_examples_app/app/feature/settings/presentation/screens/settings_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -14,4 +14,9 @@ final examples = [
     icon: Icons.replay_circle_filled_outlined,
     route: AppRoute.streams.name,
   ),
+  ExampleInfo(
+    title: 'IntroductionScreen package'.hardcoded,
+    icon: Icons.waving_hand,
+    route: AppRoute.introductionScreen.name,
+  ),
 ];

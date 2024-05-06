@@ -9,16 +9,16 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'app_router.g.dart';
 
 enum AppRoute {
-  home('/', 'List of examples'),
-  settings('settings', 'Settings'),
-  customPainter('custom_painter', 'Custom Painter Example'),
-  streams('streams', 'Streams Example'),
+  home('/'),
+  settings('settings'),
+  customPainter('custom_painter'),
+  streams('streams'),
+  introductionScreen('introduction_screen'),
   ;
 
-  const AppRoute(this.path, this.title);
+  const AppRoute(this.path);
 
   final String path;
-  final String title;
 }
 
 @Riverpod(keepAlive: true)
