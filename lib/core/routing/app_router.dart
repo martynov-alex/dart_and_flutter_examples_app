@@ -1,6 +1,7 @@
 import 'package:dart_and_flutter_examples_app/app/feature/examples/presentation/examples_screen/examples_screen.dart';
 import 'package:dart_and_flutter_examples_app/core/routing/not_found_screen.dart';
 import 'package:dart_and_flutter_examples_app/core/routing/routes/custom_painter_route.dart';
+import 'package:dart_and_flutter_examples_app/core/routing/routes/introduction_screen_route.dart';
 import 'package:dart_and_flutter_examples_app/core/routing/routes/settings_route.dart';
 import 'package:dart_and_flutter_examples_app/core/routing/routes/streams_example_route.dart';
 import 'package:go_router/go_router.dart';
@@ -34,6 +35,7 @@ GoRouter goRouter(GoRouterRef ref) {
           settingsRoute,
           customPainterRoute,
           streamsExampleRoute,
+          introductionScreenRoute,
         ],
       ),
     ],
