@@ -2,6 +2,8 @@ PODS:
   - Flutter (1.0.0)
   - flutter_keyboard_visibility (0.0.1):
     - Flutter
+  - mds_stopwatch (0.0.1):
+    - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -24,6 +26,7 @@ PODS:
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_keyboard_visibility (from `.symlinks/plugins/flutter_keyboard_visibility/ios`)
+  - mds_stopwatch (from `.symlinks/plugins/mds_stopwatch/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - sqlite3_flutter_libs (from `.symlinks/plugins/sqlite3_flutter_libs/ios`)
 
@@ -36,6 +39,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_keyboard_visibility:
     :path: ".symlinks/plugins/flutter_keyboard_visibility/ios"
+  mds_stopwatch:
+    :path: ".symlinks/plugins/mds_stopwatch/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   sqlite3_flutter_libs:
@@ -44,6 +49,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_keyboard_visibility: 0339d06371254c3eb25eeb90ba8d17dca8f9c069
+  mds_stopwatch: 3db9125e6526231de7ec1dc246d429dfd3a93276
   path_provider_foundation: 3784922295ac71e43754bd15e0653ccfd36a147c
   sqlite3: 02d1f07eaaa01f80a1c16b4b31dfcbb3345ee01a
   sqlite3_flutter_libs: 9bfe005308998aeca155330bbc2ea6dddf834a3b

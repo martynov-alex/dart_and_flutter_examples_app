@@ -4,8 +4,11 @@
     "онбординга",
     "Britanica",
     "Dogecoin",
+    "Finalizer",
+    "libnative",
     "RGBO",
-    "rowid"
+    "rowid",
+    "Runned"
   ],
   "dart.lineLength": 80,
   "[dart]": {

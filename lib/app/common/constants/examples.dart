@@ -19,4 +19,9 @@ final examples = [
     icon: Icons.waving_hand,
     route: AppRoute.introductionScreen.name,
   ),
+  ExampleInfo(
+    title: 'Interaction with the platform'.hardcoded,
+    icon: Icons.integration_instructions,
+    route: AppRoute.interactionWithThePlatform.name,
+  ),
 ];

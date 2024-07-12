@@ -565,6 +565,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.8.0"
+  mds_stopwatch:
+    dependency: "direct main"
+    description:
+      path: "plugins/mds_stopwatch"
+      relative: true
+    source: path
+    version: "0.0.1"
   meta:
     dependency: transitive
     description:
